@@ -1,0 +1,15 @@
+body {
+  background-color: cornflowerblue;
+}
+
+div {
+  background-color: chartreuse;
+  border-color: orange;
+  border-width: 10px;
+  /*border-style: dotted;*/
+  border-style: dashed;
+}
+
+span {
+  background-color: red;
+}
