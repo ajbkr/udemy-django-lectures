@@ -7,14 +7,18 @@
   </head>
   <body>
     <h1>VARIABLE.HTML</h1>
-    <h2>Her first name was {{first_name}} and her last name was {{last_name}}</h2>
+    <h2>
+      <!--Her first name was {{ first_name|upper }} ({{ first_name|length }}) and-->
+      Her first name was {{ first_name|lower|capfirst }} and her last name was
+      {{ last_name|lower|capfirst }}
+    </h2>
     <ul>
-      <li>{{some_list.0}}</li>
-      <li>{{some_list.1}}</li>
-      <li>{{some_list.2}}</li>
-      <li>{{some_list.12}}</li>
+      <li>{{ some_list.0 }}</li>
+      <li>{{ some_list.1 }}</li>
+      <li>{{ some_list.2 }}</li>
+      <li>{{ some_list.12 }}</li>
     </ul>
-    <h2>{{some_dict.inside_key}}</h2>
+    <h2>{{ some_dict.inside_key }}</h2>
     <h2>{# this is a comment #}</h2>
   </body>
 </html>
