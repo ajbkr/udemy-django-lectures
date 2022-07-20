@@ -12,13 +12,50 @@
       Her first name was {{ first_name|lower|capfirst }} and her last name was
       {{ last_name|lower|capfirst }}
     </h2>
+    {% comment %}
     <ul>
       <li>{{ some_list.0 }}</li>
       <li>{{ some_list.1 }}</li>
       <li>{{ some_list.2 }}</li>
       <li>{{ some_list.12 }}</li>
     </ul>
+    {% endcomment %}
+    <ul>
+    {% comment %}
+    {% for item in some_list %}
+      <li>{{ item }}</li>
+    {% endfor %}
+    {% endcomment %}
+    {% for jelly in some_list %}
+      <li>{{ jelly }}</li>
+    {% endfor %}
+    </ul>
+    <ul>
+    {% for k, v in some_dict.items %}
+      <li>{{ k }}: {{ v }}</li>
+    {% endfor %}
+    </ul>
     <h2>{{ some_dict.inside_key }}</h2>
     <h2>{# this is a comment #}</h2>
+
+    {% if user_logged_in == True %}
+    <!--<h1>Welcome back you are logged in</h1>-->
+    <h1>Welcome {{ first_name }}!</h1>
+    {% endif %}
+
+    {# syntax error #}
+    {# if first_name=='ROSALIND' #}
+    <h1>Welcome</h1>
+    {# endif #}
+
+    <ul>
+    {% for num in some_list %}
+      {% if num == 2 %}
+      <li>TWO</li>
+      {% else %}
+      <li>{{ num }}</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
   </body>
 </html>
