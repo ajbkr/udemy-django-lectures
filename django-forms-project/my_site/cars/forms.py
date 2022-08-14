@@ -1,6 +1,10 @@
-from django import forms
+# from django import forms
+from django.forms import ModelForm
+
+from .models import Review
 
 
+'''
 class ReviewForm(forms.Form):
     first_name = forms.CharField(label='First Name', max_length=100)
     last_name = forms.CharField(label='Last Name', max_length=100)
@@ -13,3 +17,10 @@ class ReviewForm(forms.Form):
             'cols': '2',
         })
     )
+'''
+
+
+class ReviewForm(ModelForm):
+    class Meta:
+        model = Review
+        fields = ['first_name', 'last_name', 'stars']
