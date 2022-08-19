@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView, TemplateView
+from django.views.generic import CreateView, FormView, ListView, TemplateView
 
 from classroom.forms import ContactForm
 from classroom.models import Teacher
@@ -30,3 +30,10 @@ class ContactFormView(FormView):
         print(form.cleaned_data)
 
         return super().form_valid(form)
+
+
+class TeacherListView(ListView):
+    model = Teacher
+    queryset = Teacher.objects.order_by('first_name')
+
+    context_object_name = 'teacher_list'
