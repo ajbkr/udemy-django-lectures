@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
+    DeleteView,
     DetailView,
     FormView,
     ListView,
@@ -53,5 +54,11 @@ class TeacherDetailView(DetailView):
 class TeacherUpdateView(UpdateView):
     model = Teacher
     fields = '__all__'
+
+    success_url = reverse_lazy('classroom:list_teachers')
+
+
+class TeacherDeleteView(DeleteView):
+    model = Teacher
 
     success_url = reverse_lazy('classroom:list_teachers')

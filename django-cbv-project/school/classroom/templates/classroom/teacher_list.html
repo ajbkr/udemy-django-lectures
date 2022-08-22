@@ -7,6 +7,9 @@
       <li>
         <a href="{% url 'classroom:update_teacher' pk=teacher.id %}">Update Information for {{ teacher.first_name }}</a>
       </li>
+      <li>
+        <a href="{% url 'classroom:delete_teacher' pk=teacher.id %}">DELETE {{ teacher.first_name }}</a>
+      </li>
     </ul>
   </li>
   {% endfor %}

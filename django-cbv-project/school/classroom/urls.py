@@ -4,6 +4,7 @@ from .views import (
     ContactFormView,
     HomeView,
     TeacherCreateView,
+    TeacherDeleteView,
     TeacherDetailView,
     TeacherListView,
     TeacherUpdateView,
@@ -36,5 +37,10 @@ urlpatterns = [
         'update_teacher/<int:pk>',
         TeacherUpdateView.as_view(),
         name='update_teacher'
+    ),
+    path(
+        'delete_teacher/<int:pk>',
+        TeacherDeleteView.as_view(),
+        name='delete_teacher'
     ),
 ]
