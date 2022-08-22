@@ -5,6 +5,7 @@ from django.views.generic import (
     FormView,
     ListView,
     TemplateView,
+    UpdateView,
 )
 
 from classroom.forms import ContactForm
@@ -47,3 +48,10 @@ class TeacherListView(ListView):
 
 class TeacherDetailView(DetailView):
     model = Teacher
+
+
+class TeacherUpdateView(UpdateView):
+    model = Teacher
+    fields = '__all__'
+
+    success_url = reverse_lazy('classroom:list_teachers')
