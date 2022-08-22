@@ -4,6 +4,7 @@ from .views import (
     ContactFormView,
     HomeView,
     TeacherCreateView,
+    TeacherDetailView,
     TeacherListView,
     ThankYouView,
 )
@@ -24,5 +25,10 @@ urlpatterns = [
         'list_teachers/',
         TeacherListView.as_view(),
         name='list_teachers'
+    ),
+    path(
+        'view_teacher/<int:pk>',
+        TeacherDetailView.as_view(),
+        name='view_teacher'
     ),
 ]
