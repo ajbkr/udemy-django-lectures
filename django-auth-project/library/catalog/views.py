@@ -1,5 +1,30 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.generic import CreateView, DetailView
+
+from .models import Author, Book, BookInstance, Genre, Language  # noqa: F401
 
 
 def index(request):
-    return HttpResponse('hello')
+    num_books = Book.objects.count()
+    num_instances = BookInstance.objects.count()
+
+    num_instances_avail = BookInstance.objects.filter(
+        status__exact='a'
+    ).count()
+
+    context = {
+        'num_books': num_books,
+        'num_instances': num_instances,
+        'num_instances_avail': num_instances_avail,
+    }
+
+    return render(request, 'catalog/index.html', context=context)
+
+
+class BookCreateView(CreateView):
+    model = Book
+    fields = '__all__'
+
+
+class BookDetailView(DetailView):
+    model = Book
