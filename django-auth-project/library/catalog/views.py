@@ -1,7 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import CreateView, DetailView
+from django.urls import reverse_lazy
 
 from .models import Author, Book, BookInstance, Genre, Language  # noqa: F401
 
@@ -35,3 +37,9 @@ class BookDetailView(DetailView):
 @login_required
 def my_view(request):
     return render(request, 'catalog/my_view.html')
+
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'catalog/signup.html'
