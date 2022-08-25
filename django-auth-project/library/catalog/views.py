@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import CreateView, DetailView
 
@@ -21,10 +23,15 @@ def index(request):
     return render(request, 'catalog/index.html', context=context)
 
 
-class BookCreateView(CreateView):
+class BookCreateView(LoginRequiredMixin, CreateView):
     model = Book
     fields = '__all__'
 
 
 class BookDetailView(DetailView):
     model = Book
+
+
+@login_required
+def my_view(request):
+    return render(request, 'catalog/my_view.html')
